@@ -38,6 +38,7 @@ find "${local_decrypt_dir}" -type d \( $prune_paths -false \) -prune -o -type f 
 			(*.DS_STORE) continue ;;
 			(*.part) continue ;;
 			(*.nocloud) continue ;;
+			(*.norm) continue ;;
 		esac
 
 		if [ -f "${cloud_decrypt_dir}${filename}" ]; then
