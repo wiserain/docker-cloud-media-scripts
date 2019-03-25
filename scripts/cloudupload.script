@@ -18,9 +18,11 @@ check_rclone_cloud
 addedSize=0
 oldSize=0
 
+prune_paths=$(find "${local_decrypt_dir}" -name .nocloud -printf "-path %h -o ")
+
 echo "[ $(date $(printenv DATE_FORMAT)) ] ###### Start cloud upload ######"
 # Generate filelist and iterate through it...
-find "${local_decrypt_dir}" -type f -print0 | xargs -0 stat --format '%Y :%y %n' | sort -nr | cut -d: -f2- | awk '{$1=$2=$3=""; print $0}' |
+find "${local_decrypt_dir}" -type d \( $prune_paths -false \) -prune -o -type f -print0 | xargs -0 --no-run-if-empty stat --format '%Y :%y %n' | sort -nr | cut -d: -f2- | awk '{$1=$2=$3=""; print $0}' |
 	while read -r n; do
 
 		# Find the pathname relative to the root of your remote and store filename
@@ -35,6 +37,7 @@ find "${local_decrypt_dir}" -type f -print0 | xargs -0 stat --format '%Y :%y %n'
 			(*.unionfs-fuse*) continue ;;
 			(*.DS_STORE) continue ;;
 			(*.part) continue ;;
+			(*.nocloud) continue ;;
 		esac
 
 		if [ -f "${cloud_decrypt_dir}${filename}" ]; then

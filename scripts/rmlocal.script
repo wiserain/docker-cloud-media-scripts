@@ -27,6 +27,7 @@ rm_time () {
 				(*.unionfs-fuse*) continue ;;
 				(*.DS_STORE) continue ;;
 				(*.part) continue ;;
+				(*.nocloud) continue ;;
 			esac
 
 			# If file is opened by another process, wait until it isn't.
@@ -77,6 +78,7 @@ rm_instant () {
 				(*.unionfs-fuse*) continue ;;
 				(*.DS_STORE) continue ;;
 				(*.part) continue ;;
+				(*.nocloud) continue ;;
 			esac
 
 			# If file is opened by another process, wait until it isn't.
@@ -141,6 +143,7 @@ rm_space () {
 					(*.fuse*) continue ;;
 					(.DS_STORE) continue ;;
 					(*.part) continue ;;
+					(*.nocloud) continue ;;
 			esac
 
 			# If file is opened by another process, wait until it isn't.
