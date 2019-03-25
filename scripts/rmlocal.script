@@ -61,7 +61,7 @@ rm_time () {
                         fi
 		done
 
-	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "1" ]; then
+	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "0" ]; then
 		find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
 	fi
 }
@@ -115,7 +115,7 @@ rm_instant () {
                         fi
 		done
 
-	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "1" ]; then
+	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "0" ]; then
 		find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
 	fi
 }
@@ -183,7 +183,7 @@ rm_space () {
                         fi
 		done
 
-	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "1" ]; then
+	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "0" ]; then
 		find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
 	fi
 }
