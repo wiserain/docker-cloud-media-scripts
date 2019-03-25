@@ -61,7 +61,9 @@ rm_time () {
                         fi
 		done
 
-	find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
+	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "1" ]; then
+		find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
+	fi
 }
 
 rm_instant () {
@@ -113,7 +115,9 @@ rm_instant () {
                         fi
 		done
 
-	find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
+	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "1" ]; then
+		find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
+	fi
 }
 
 rm_space () {
@@ -179,7 +183,9 @@ rm_space () {
                         fi
 		done
 
-	find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
+	if [ "$(printenv KEEP_EMPTY_DIRS)" -eq "1" ]; then
+		find "${local_decrypt_dir}" -mindepth 1 -type d -empty -delete
+	fi
 }
 
 # If script is already running; abort.

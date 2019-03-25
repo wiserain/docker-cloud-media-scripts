@@ -78,6 +78,9 @@ ENV PLEX_TOKEN ""
 ENV CLOUDUPLOADTIME "0 1 * * *"
 ENV RMDELETETIME "0 6 * * *"
 
+# others
+ENV KEEP_EMPTY_DIRS "1"
+
 ####################
 # SCRIPTS
 ####################
