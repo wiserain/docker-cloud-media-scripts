@@ -196,7 +196,7 @@ fi
 
 check_rclone_cloud
 
-echo "Removing files based on ${REMOVE_LOCAL_FILES_BASED_ON}"
+echo "[ $(date $(printenv DATE_FORMAT)) ] ###### Removing local files based on ${REMOVE_LOCAL_FILES_BASED_ON} ######"
 
 if [ "$REMOVE_LOCAL_FILES_BASED_ON" = "space" ]; then
 	rm_space
@@ -208,3 +208,7 @@ else
 	echo "[ $(date $(printenv DATE_FORMAT)) ] no option to remove old files"
 	exit 02
 fi
+
+echo "[ $(date $(printenv DATE_FORMAT)) ] ###### Removing local files ended successfully ######"
+
+exit 0
