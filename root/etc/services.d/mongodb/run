@@ -3,7 +3,7 @@
 
 umask 022
 
-mongodb_command="mongod --logpath ${log_dir}/mongod.log --logappend --logRotate reopen"
+mongodb_command="mongod --logpath ${log_dir}/mongod.log --logappend --logRotate reopen --bind_ip 127.0.0.1"
 
 echo "Started ${mongodb_command}"
 exec s6-setuidgid abc $mongodb_command
