@@ -1,9 +1,7 @@
 ####################
 # BASE IMAGE
 ####################
-FROM ubuntu:16.04
-
-MAINTAINER madslundt@live.dk <madslundt@live.dk>
+FROM ubuntu:18.04
 
 
 ####################
@@ -24,10 +22,12 @@ RUN apt-get update && \
     apt-get install -y openssl && \
     sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 
-# MongoDB 3.4
+# MongoDB 4.0 (NOT compatible with 3.4 or 3.6)
 RUN \
-   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
-   echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list && \
+   apt-get install -y \
+      gnupg2 && \
+   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
+   echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
    apt-get update && \
    apt-get install -y mongodb-org
 
